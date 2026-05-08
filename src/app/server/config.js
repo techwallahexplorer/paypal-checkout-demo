@@ -45,7 +45,9 @@ module.exports = {
       'img/payWithPaypal.jpg',
       'css/main.css',
     ],
-    secret: 'secretSanta', // for you to fill out
+    secret:
+      process.env.CSRF_SECRET ||
+      require('crypto').randomBytes(32).toString('hex'),
   },
 
   payment: {
